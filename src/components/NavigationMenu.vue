@@ -8,7 +8,7 @@ import {
   DocumentTextIcon as ODocumentTextIcon,
   UserIcon as OUserIcon,
   EllipsisHorizontalCircleIcon as OEllipsisHorizontalCircleIcon,
-} from "@heroicons/vue/24/outline";
+} from '@heroicons/vue/24/outline'
 import {
   HomeIcon as SHomeIcon,
   HashtagIcon as SHashtagIcon,
@@ -18,7 +18,7 @@ import {
   DocumentTextIcon as SDocumentTextIcon,
   UserIcon as SUserIcon,
   EllipsisHorizontalCircleIcon as SEllipsisHorizontalCircleIcon,
-} from "@heroicons/vue/24/solid";
+} from '@heroicons/vue/24/solid'
 
 export default {
   components: {
@@ -47,8 +47,8 @@ export default {
             outline: OHomeIcon,
             solid: SHomeIcon,
           },
-          name: "Home",
-          href: "/home",
+          name: 'Home',
+          href: '/home',
           current: true,
         },
         {
@@ -56,8 +56,8 @@ export default {
             outline: OHashtagIcon,
             solid: SHashtagIcon,
           },
-          name: "Explore",
-          href: "#",
+          name: 'Explore',
+          href: '#',
           current: false,
         },
         {
@@ -65,8 +65,8 @@ export default {
             outline: OBellIcon,
             solid: SBellIcon,
           },
-          name: "Notifications",
-          href: "#",
+          name: 'Notifications',
+          href: '#',
           current: false,
         },
         {
@@ -74,8 +74,8 @@ export default {
             outline: OEnvelopeIcon,
             solid: SEnvelopeIcon,
           },
-          name: "Messages",
-          href: "#",
+          name: 'Messages',
+          href: '#',
           current: false,
         },
         {
@@ -83,8 +83,8 @@ export default {
             outline: OBookmarkIcon,
             solid: SBookmarkIcon,
           },
-          name: "Bookmarks",
-          href: "#",
+          name: 'Bookmarks',
+          href: '#',
           current: false,
         },
         {
@@ -92,8 +92,8 @@ export default {
             outline: ODocumentTextIcon,
             solid: SDocumentTextIcon,
           },
-          name: "Lists",
-          href: "#",
+          name: 'Lists',
+          href: '#',
           current: false,
         },
         {
@@ -101,8 +101,8 @@ export default {
             outline: OUserIcon,
             solid: SUserIcon,
           },
-          name: "Profile",
-          href: "#",
+          name: 'Profile',
+          href: '#',
           current: false,
         },
         {
@@ -110,39 +110,31 @@ export default {
             outline: OEllipsisHorizontalCircleIcon,
             solid: SEllipsisHorizontalCircleIcon,
           },
-          name: "More",
-          href: "#",
+          name: 'More',
+          href: '#',
           current: false,
         },
       ],
-    };
+    }
   },
   methods: {
-    navigateTo({ name, href }) {
+    navigateTo(name, href) {
       this.menus = this.menus.map((menu) => ({
         ...menu,
         current: menu.name === name,
-      }));
+      }))
 
-      if (href === "#") return;
-      this.$router.push(href);
+      if (href === '#') return
+      this.$router.push(href)
     },
   },
-};
+}
 </script>
 
 <template>
   <nav>
-    <div
-      v-for="(menu, index) in menus"
-      :key="index"
-      @click="navigateTo({ name: menu.name, href: menu.href })"
-      class="flex justify-center items-center rounded-full p-3 hover:bg-[#0f1419]/10 max-w-fit cursor-pointer"
-    >
-      <component
-        class="w-7 h-7"
-        :is="menu.icon[menu.current ? 'solid' : 'outline']"
-      />
+    <div v-for="(menu, index) in menus" :key="index" @click="navigateTo(menu.name, menu.href)" class="flex justify-center items-center rounded-full p-3 hover:bg-[#0f1419]/10 max-w-fit cursor-pointer">
+      <component class="w-7 h-7" :is="menu.icon[menu.current ? 'solid' : 'outline']" />
       <div class="hidden md:block ml-5 mr-4 text-lg">
         <p :class="[menu.current && 'font-bold']">{{ menu.name }}</p>
       </div>

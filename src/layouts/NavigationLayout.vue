@@ -1,8 +1,8 @@
 <script>
-import { EllipsisHorizontalIcon, PlusIcon } from "@heroicons/vue/24/outline";
-import TwitterLogo from "@/components/icons/TwitterLogo.vue";
-import NavigationMenu from "@/components/NavigationMenu.vue";
-import { useUser } from "../stores/user";
+import { EllipsisHorizontalIcon, PlusIcon } from '@heroicons/vue/24/outline'
+import TwitterLogo from '@/components/icons/TwitterLogo.vue'
+import NavigationMenu from '@/components/NavigationMenu.vue'
+import { useUser } from '../stores/user'
 
 export default {
   components: {
@@ -14,64 +14,45 @@ export default {
   data() {
     return {
       userStore: useUser(),
-    };
+    }
   },
   methods: {
     async logout() {
-      await this.userStore.logout();
+      await this.userStore.logout()
     },
   },
-};
+}
 </script>
 
 <template>
   <div class="flex min-h-screen max-w-7xl mx-auto divide-x divide-[#eff3f4]">
-    <header
-      class="h-screen md:w-[275px] flex flex-col justify-between px-3 py-2"
-    >
+    <header class="h-screen md:w-[275px] flex flex-col justify-between px-3 py-2">
       <div class="flex flex-col justify-center">
-        <div
-          class="w-[52px] h-[52px] cursor-pointer rounded-full hover:bg-[#1d9bf0]/10 flex justify-center items-center"
-        >
+        <div class="w-[52px] h-[52px] cursor-pointer rounded-full hover:bg-[#1d9bf0]/10 flex justify-center items-center">
           <TwitterLogo />
         </div>
 
         <NavigationMenu />
 
         <div class="hidden md:flex w-[85%] my-2">
-          <button
-            class="bg-twitter hover:bg-[#1a8cd8] flex-1 min-w-[52px] min-h-[52px] px-8 rounded-full text-white font-bold"
-          >
-            Tweet
-          </button>
+          <button class="bg-twitter hover:bg-[#1a8cd8] flex-1 min-w-[52px] min-h-[52px] px-8 rounded-full text-white font-bold">Tweet</button>
         </div>
 
-        <div
-          class="my-3 mx-1 flex md:hidden justify-center items-center rounded-full p-2 bg-twitter hover:bg-[#1a8cd8] text-white max-w-fit cursor-pointer"
-        >
+        <div class="my-3 mx-1 flex md:hidden justify-center items-center rounded-full p-2 bg-twitter hover:bg-[#1a8cd8] text-white max-w-fit cursor-pointer">
           <PlusIcon class="h-7 w-7" />
         </div>
       </div>
 
-      <div
-        @click="logout"
-        class="flex items-center hover:bg-[#0f1419]/10 rounded-full cursor-pointer p-3 space-x-3"
-      >
+      <div @click="logout" class="flex items-center hover:bg-[#0f1419]/10 rounded-full cursor-pointer p-3 space-x-3">
         <div class="h-10 w-10">
-          <img
-            class="h-full w-full rounded-full"
-            src="https://i.pravatar.cc/300"
-            alt="Avatar"
-          />
+          <img class="h-full w-full rounded-full" src="https://i.pravatar.cc/300" alt="Avatar" />
         </div>
 
         <div class="hidden md:block flex-1">
           <p class="text-[#0f1419] font-bold text-[15px]">
             {{ userStore.user.username }}
           </p>
-          <p class="text-[#536471] text-[15px]">
-            @{{ userStore.user.username }}
-          </p>
+          <p class="text-[#536471] text-[15px]">@{{ userStore.user.username }}</p>
         </div>
 
         <div class="hidden md:block">
